@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head th:replace="layouts :: header"></head>
+    <body>
+        <nav th:replace="layouts :: navbar"></nav>
+        <form action="/projects/save" th:object="${project}" method="post">
+            <input type="text" placeholder="Project Name" th:field="${project.name}">
+            <select th:field="${project.stage}">
+                <option th:value="NOTSTARTED">Not Started</option>
+                <option th:value="COMPLETED">Completed</option>
+                <option th:value="INPROGRESS">In progress</option>
+            </select>
+            <textarea placeholder="Enter project description" th:field="${project.description}"></textarea>
+            <select th:field="*{employees}" multiple="multiple">
+                <option th:each = "employee : ${allEmployees}"
+                        th:value = "${employee.employeeId}"
+                        th:text = "${employee.firstName}">
+                </option>
+            </select>
+            <button type="submit">Create project</button>
+        </form>
+    </body>
+</html>

@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+    <head th:replace="layouts :: header"></head>
+    <body>
+        <nav th:replace="layouts :: navbar"></nav>
+        <form action="/employees/save" th:object="${employee}" method="post">
+            <input type="text" placeholder="Employee first name" th:field="${employee.firstName}">
+            <input type="text" placeholder="Employee last name" th:field="${employee.lastName}">
+            <input type="text" placeholder="Employee email" th:field="${employee.email}">
+            <button type="submit">Create employee</button>
+        </form>
+    </body>
+
+</html>
